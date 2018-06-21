@@ -1,0 +1,36 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@model IList<test.Models.Ads>
+
+<div class="container inhalt" id='AdvertiseElements'>
+            <h2>@ViewData["Content_titel"]</h2>
+            <p>@ViewData["Content"]</p>
+            <br />
+
+
+@foreach (var obj in Model)
+{ 
+        <!--< div class="container inhalt" id='AdvertiseElements'>-->
+
+
+        <div class="media" onclick="toggler('@obj.AdKey');" id="media@(obj.AdKey)">
+            <hr></hr>
+            <div class="media-left">
+                <img src="http://www.picsum.photos/60/60/?@(obj.AdKey)" class="media-object" style="width:60px"></img>
+            </div>
+            <div class="media-body">
+                <h4 class="media-heading" id="ads-titel@(obj.AdKey)" data-email="@obj.name" data-name="@obj.name" data-phone="@obj.phone" data-price="@obj.price">@obj.titel</h4>
+                <h5 id="ads-subject@(obj.AdKey)">@obj.subject</h5>
+            </div>
+            <span id="price{{AdKey}}" data-type="text" data-placement="left" class="label label-primary">@obj.price €</span>
+            <div class="pull-right"><h6>@Html.DisplayFor( m => obj.timestamp)</h6> </div>
+            <div class="label label-info"></div>
+        </div>
+ 
+ }
+
+
+
+
+</div>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfAds xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Ads>
+    <price>90</price>
+    <titel>iPhone 8+</titel>
+    <subject>subject</subject>
+    <AdKey>1</AdKey>
+    <name>name1</name>
+    <timestamp>2018-06-19T10:45:30</timestamp>
+    <phone>001234234</phone>
+    <username>mike</username>
+    <email>mike@yahoo.com</email>
+  </Ads>
+  <Ads>
+    <price>75</price>
+    <titel>Jeep cherokee</titel>
+    <subject>subject</subject>
+    <AdKey>2</AdKey>
+    <name>name2</name>
+    <timestamp>2018-06-19T13:45:30</timestamp>
+    <phone>001234234</phone>
+    <username>mehmet</username>
+    <email>mehmet@me.com</email>
+  </Ads>
+  <Ads>
+    <price>229</price>
+    <titel>iMac 27inch</titel>
+    <subject>subject</subject>
+    <AdKey>3</AdKey>
+    <name>name3</name>
+    <timestamp>2018-06-19T16:45:30</timestamp>
+    <phone>001234234</phone>
+    <username>george</username>
+    <email>george@gmail.com</email>
+  </Ads>
+  <Ads>
+    <price>22</price>
+    <titel>something</titel>
+    <subject>i am selling something</subject>
+    <AdKey>4</AdKey>
+    <name>markus</name>
+    <timestamp>2018-06-21T13:57:00.8563+04:00</timestamp>
+    <phone />
+    <email>akca1@me.com</email>
+  </Ads>
+</ArrayOfAds>

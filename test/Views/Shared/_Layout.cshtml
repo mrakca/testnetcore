@@ -1,0 +1,360 @@
+﻿@inject test.Services.AdsService ads
+
+@model IList<test.Models.Ads>
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <title>@ViewData["Title"] - test</title>
+        <meta charset="utf-8" />
+        <!--<meta name="viewport" content="width=device-width, initial-scale=1"/>-->
+    </head>
+    <body>
+        s
+
+        <link type="text/css" rel="stylesheet" href="css/simplePagination.css" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="css/style.css" />
+        <!-- x-editable (bootstrap version) -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/css/bootstrap-editable.css" rel="stylesheet" />
+
+
+
+        <!-- BEGIN # BOOTSNIP INFO -->
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <!--<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">-->
+                    <!--<span class="sr-only">Toggle navigation</span>-->
+                    <!--&lt;!&ndash;<span class="icon-bar"></span>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<span class="icon-bar"></span>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<span class="icon-bar"></span>&ndash;&gt;-->
+                    <!--</button>-->
+                    <a class="navbar-brand"><span class="glyphicon glyphicon-star" id="logIcon" />simpleAds</a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav" id="navbar-nav">
+                        <li id="mainsite" data-pwvalidateregex="{{pwvalidateregex}}" class="active">
+                            <a id="Mainsite1" href="#">Mainsite <span id="numberads" class="badge">@if (ads.GetAllAdsDetails().Any())
+    {
+        @ads.GetAllAdsDetails().Count()
+    }
+</span></a>
+                        </li>
+                        <!--
+                    <span class="sr-only">(current)</span>-->
+                        <li><a id="help" href="#">Help</a></li>
+                        <li class="" id="myads"><a href="#" id="myadsText">My Ads</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown ">
+                            <a href="#" class="dropdown-toggle @(ViewBag.dropdown_status)" data-toggle="dropdown" role="button" aria-expanded="false">
+                                <span class="glyphicon glyphicon-log-in" id="glyphicon-login"></span> Hello! <span id="text-main-login">@ViewBag.sessionv</span><span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-cart" role="menu">
+                                <li>
+                                    <span class="item">
+                                        <span class="item-left">
+                                            <img src="http://www.picsum.photos/100/100/" alt="" />
+
+                                        </span>
+                                        <span class="item-right">
+                                            <div class="well well-sm"><span id="text-main-login2">@ViewBag.sessionv</span></div>
+                                            <div class="btn-group-vertical btn-group-sm">
+                                                <button type="button" id="myAccount" class="btn btn-primary">Account Settings</button>
+                                                <button type="button" id="myAds" class="btn btn-primary">Meine Anzeigen</button>
+                                            </div> <p></p>
+                                            <button class="btn btn-xs btn-danger pull-right" id="logout"> <span class="glyphicon glyphicon-log-out"></span> logout</button>
+                                        </span>
+                                    </span>
+                                </li>
+
+                            </ul>
+                        </li>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
+        <div class="container">
+            <div class="row">
+                <br /><br /><br />
+                <!--<h1 class="text-center"> </h1> -->
+                <!--<p class="text-center"><a href="#" class="btn btn-primary btn-lg" role="button" data-toggle="modal" data-target="#login-modal">Login</a></p>-->
+                <!--<p class="text-center"><a href="#" class="btn btn-primary btn-lg" role="button" data-toggle="modal" data-target="#edit-modal">Edit</a></p>-->
+            </div>
+        </div>
+        <!-- END # BOOTSNIP INFO -->
+        <!-- BEGIN # MODAL EDIT -->
+        <div class="modal fade" id="edit-modal" data-elementsPerpage="{{elementsPerpage}}" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="gridSystemModalLabel"></h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="media" id="media" data-id="123">
+                            <div class="media-left">
+                                <img src="http://www.picsum.photos/60/60/?" class="media-object" style="width:60px" />
+                            </div>
+                            <div class="media-body">
+                                <h4 class="media-heading">
+                                    <a href="#" id="adsTitel" data-type="text" data-placement="right"></a>
+                                </h4>
+                                <h5>
+                                    <a href="#" id="adsText" data-type="textarea" data-placement="right"></a>
+                                </h5>
+
+
+                                <div class="panel panel-primary">
+                                    <div class="panel-heading">
+                                        <h3 class="panel-title">Contact</h3>
+                                    </div>
+                                    <div class="panel-body">
+
+                                        <h5>
+                                            <span class="label label-primary">Email:</span><a href="#" id="editemail" data-type="text" data-placement="right"></a><br /><br />
+                                            <span class="label label-primary">Phone:</span><a href="#" id="editphone" data-type="text" data-placement="right"></a><br /><br />
+                                            <span class="label label-primary">Name:</span><a href="#" id="editname" data-type="text" data-placement="right"></a>
+                                        </h5>
+                                        <h6></h6>
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+                            <h4><span id="editprice" data-type="text" data-placement="left" class="label label-primary"></span></h4>
+                            <hr />
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" id="editSave" class="btn btn-default" data-dismiss="modal">Save&amp;Close</button>
+                        <button type="button" id="delete" class="btn btn-default" data-dismiss="modal">delete Ad</button>
+                        <!--<button type="button" class="btn btn-primary">Save changes</button>-->
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+        <!-- END # MODAL EDIT -->
+        <!-- BEGIN # MODAL LOGIN -->
+        <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header" align="center">
+                        <img class="img-circle" id="img_logo" src="http://www.picsum.photos/200/200/" />
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                        </button>
+                    </div>
+                    <!-- Begin # DIV Form -->
+                    <div id="div-forms">
+
+                        <!-- Begin # Login Form -->
+                        <form id="login-form" action="api/User" method="post">
+                            <div class="modal-body">
+                                <div id="div-login-msg">
+                                    <div id="icon-login-msg" class="glyphicon glyphicon-chevron-right"></div>
+                                    <span id="text-login-msg">Type your username and password.</span>
+                                </div>
+                                <input name="login_username" id="login_username" class="form-control" type="text" placeholder="Username" required="required" />
+                                <input name="login_password" id="login_password" class="form-control" type="password" placeholder="Password" required="required" />
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox"> Remember me </input>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <div>
+                                    <button type="submit" class="btn btn-primary btn-lg btn-block">Login</button>
+                                </div>
+                                <div>
+                                    <button id="login_lost_btn" type="button" class="btn btn-link">Lost Password?</button>
+                                    <button id="login_register_btn" type="button" class="btn btn-link">Register</button>
+                                </div>
+                            </div>
+                        </form>
+                        <!-- End # Login Form -->
+                        <!-- Begin | Lost Password Form -->
+                        <form id="lost-form" style="display:none;">
+                            <div class="modal-body">
+                                <div id="div-lost-msg">
+                                    <div id="icon-lost-msg" class="glyphicon glyphicon-chevron-right"></div>
+                                    <span id="text-lost-msg">Type your e-mail.</span>
+                                </div>
+                                <input id="lost_email" class="form-control" type="text" placeholder="E-Mail" required="required" />
+                            </div>
+                            <div class="modal-footer">
+                                <div>
+                                    <button type="submit" class="btn btn-primary btn-lg btn-block">Send</button>
+                                </div>
+                                <div>
+                                    <button id="lost_login_btn" type="button" class="btn btn-link">Log In</button>
+                                    <button id="lost_register_btn" type="button" class="btn btn-link">Register</button>
+                                </div>
+                            </div>
+                        </form>
+                        <!-- End | Lost Password Form -->
+                        <!-- Begin | Register Form //signup_nextpage.php-->
+                        <form id="register-form" action="signup_nextpage.php" method="post" style="display:none;">
+                            <div class="modal-body">
+                                <div id="div-register-msg">
+                                    <div id="icon-register-msg" class="glyphicon glyphicon-chevron-right"></div>
+                                    <span id="text-register-msg">Register an account.</span>
+                                </div>
+                                <input name="register_username" id="register_username" class="form-control" type="text" placeholder="Username" required="required" />
+                                <input name="register_email" id="register_email" class="form-control" type="text" placeholder="E-Mail" required="required" />
+                                <input name="register_password" id="register_password" data-html="true" data-placement="bottom" data-trigger="hover" data-toggle="tooltip" title="
+                                       * At least one upper case letter<br />
+                                * At least one lower case letter<br />
+                                * At least one digit<br />
+                                * At least one special character<br />
+                                * Minimum 8 in length"  class="form-control" type="password" placeholder="Password" required="required" />
+                                <input name="c_register_password" id="c_register_password" data-html="true" data-placement="bottom" data-trigger="hover" data-toggle="tooltip" title="
+                                       * At least one upper case letter<br />
+                                * At least one lower case letter<br />
+                                * At least one digit<br />
+                                * At least one special character<br />
+                                * Minimum 8 in length" class="form-control" type="password" placeholder="Password confirm" required="required" />
+                            </div>
+                            <div class="modal-footer">
+                                <div>
+                                    <button type="submit" class="btn btn-primary btn-lg btn-block">Register</button>
+                                </div>
+                                <div>
+                                    <button id="register_login_btn" type="button" class="btn btn-link">Log In</button>
+                                    <button id="register_lost_btn" type="button" class="btn btn-link">Lost Password?</button>
+                                </div>
+                            </div>
+                        </form>
+                        <!-- End | Register Form -->
+
+                    </div>
+                    <!-- End # DIV Form -->
+
+                </div>
+            </div>
+        </div>
+
+
+        <!-- BEGIN # MODAL ACCOUNT -->
+        <div class="modal fade" id="setting-modal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">X</span></button>
+                        <h4 class="modal-title">Account Settings</h4>
+                        <br></br>
+                        <div id="div-acc-setting-msg">
+                            <div id="icon-acc-msg" class="glyphicon glyphicon-chevron-right"></div>
+                            <span id="text-acc-msg">Password change</span>
+                        </div>
+                        <input name="change_password" id="change_password" class="form-control" type="password" placeholder="Password" />
+                        <input name="c_change_password" id="c_change_password" class="form-control" type="password" placeholder="Password confirm" />
+                        <br></br>
+                        <span>Ads per Page: </span><a href="#" id="adsPerPage" data-type="select" data-pk="1" data-title="Select number of ads per Page"></a>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" id="accoutSave" class="btn btn-default">Save&Close</button>
+                        <button type="button" id="cancel" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                        <!--<button type="button" class="btn btn-primary">Save changes</button>  data-dismiss="modal"  -->
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+        <!-- END # MODAL ACCOUNT -->
+
+
+
+        @RenderBody()
+
+        <!-- END # MODAL LOGIN -->
+
+
+
+        <form class="container form-horizontal" id="postElement" role="form" method="post" action="api/Ads">
+            <div class="form-group ">
+                <label class="col-xs-2 control-label">Name</label>
+                <div class="col-xs-10">
+                    <input type="text" class="form-control" name="name" placeholder="{{username}}" />
+                    <span id="helptname" class="help-block"></span>
+                </div>
+            </div>
+            <div class="form-group ">
+                <label class="col-xs-2 control-label">Titel</label>
+                <div class="col-xs-10">
+                    <input type="text" class="form-control" name="titel" placeholder="" />
+                    <span id="helptitel" class="help-block"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <!--// has-error, has-success,has-warning-->
+                <label class="col-xs-2 control-label">Message</label>
+                <div class="col-xs-10">
+                    <textarea class="form-control" id="message" name="message" placeholder=""></textarea>
+                    <span id="helpmessage" class="help-block"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-xs-2 control-label">Phone</label>
+                <div class="col-xs-10">
+                    <input type="email" class="form-control" name="phone" placeholder="" />
+                    <span id="helpphone" class="help-block"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-xs-2 control-label">Email</label>
+                <div class="col-xs-10">
+                    <input type="email" class="form-control" name="email" placeholder="" />
+                    <span id="helpemail" class="help-block"></span>
+                </div>
+            </div>
+            <div class="form-group ">
+                <label class="col-xs-2 control-label">€</label>
+                <div class="col-xs-10">
+                    <input type="number" class="form-control" name="price" placeholder="" />
+                    <span id="helpprice" class="help-block"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-10 col-sm-offset-2">
+                    <input id="submit" name="submit" type="submit" value="Send" class="btn btn-primary" />
+                </div>
+            </div>
+        </form>
+
+
+        <!--
+    <div class="pagination-holder black clearfix">
+        <ul id="dark-pagination" class="pagination"></ul>
+
+        container
+    </div>-->
+        <!-- -->
+
+
+        <div class="container">
+
+            <div id="demo3" class="pagination"></div>
+        </div>
+
+
+        <environment include="Development">
+
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+            <script src="https://raw.github.com/botmonster/jquery-bootpag/master/lib/jquery.bootpag.min.js"></script>
+
+            <script src="~/js/jquery.js"></script>
+            <script type="text/javascript" src="~/js/jquery.simplePagination.js"></script>
+
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/js/bootstrap-editable.min.js"></script>
+        </environment>
+        @RenderSection("Scripts", required: false)
+    </body>
+</html>
